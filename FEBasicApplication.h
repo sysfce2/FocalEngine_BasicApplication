@@ -12,6 +12,13 @@ namespace FocalEngine
 		std::map<std::string, std::string> Settings;
 	};
 
+	enum class EllipsisPosition
+	{
+		End,
+		Middle,
+		Start
+	};
+
 	class FEBASICAPPLICATION_API FEBasicApplication
 	{
 		SINGLETON_PRIVATE_PART(FEBasicApplication)
@@ -104,6 +111,8 @@ namespace FocalEngine
 		size_t MonitorInfoToMonitorIndex(MonitorInfo* Monitor);
 
 		std::vector<CommandLineAction> ParseCommandLine(std::string CommandLine, const std::string ActionPrefix = "-", const std::string SettingEqualizer = "=");
+
+		std::string TruncateText(const std::string& Text, float MaxWidth, EllipsisPosition Position = EllipsisPosition::End, const std::string& Ellipsis = "...");
 	};
 
 #ifdef FEBASICAPPLICATION_SHARED
